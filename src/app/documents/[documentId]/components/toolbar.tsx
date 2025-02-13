@@ -20,6 +20,8 @@ import { ToolbarButton } from "./toolbar-button";
 import { HeadingLevelButton } from "./heading-level-button";
 import { TextColorButton } from "./text-color-button";
 import { TextHighlightButton } from "./text-highlight-button";
+import { LinkButton } from "./link-button";
+import { ImageButton } from "./image-button";
 
 export function Toolbar() {
   const { editor } = useEditorStore();
@@ -136,8 +138,8 @@ export function Toolbar() {
         orientation="vertical"
         className="h-6 bg-foreground/30 dark:bg-primary-foreground/50"
       />
-      {/* TODO: Link */}
-      {/* TODO: Image */}
+      <LinkButton/>
+      <ImageButton/>
       {/* TODO: Align */}
       {/* TODO: Line Height */}
       {/* TODO: List */}
