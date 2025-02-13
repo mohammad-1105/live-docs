@@ -16,6 +16,9 @@ import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import { useEditorStore } from "@/store/use-editor-store";
 import Heading from "@tiptap/extension-heading";
+import {Color} from "@tiptap/extension-color"
+import Highlight from "@tiptap/extension-highlight"
+import ThemeToggle from "@/components/theme-toggle";
 
 export function Editor() {
   const { setEditor } = useEditorStore();
@@ -49,7 +52,7 @@ export function Editor() {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px",
         class:
-          "focus:outline-none border print:border-0 bg-white border-[#c7c7c7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text",
+          "focus:outline-none border print:border-0 border-[#c7c7c7] dark:border-[#3a3a3a] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text",
       },
     },
     extensions: [
@@ -72,23 +75,27 @@ export function Editor() {
       Heading.configure({
         levels: [1, 2, 3, 4, 5],
       }),
+      Color,
+      Highlight.configure({
+        multicolor: true
+      })
     ],
-    content: `
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
-      `,
+    // content: `
+    //     <table>
+    //       <tbody>
+    //         <tr>
+    //           <th>Name</th>
+    //           <th colspan="3">Description</th>
+    //         </tr>
+    //         <tr>
+    //           <td>Cyndi Lauper</td>
+    //           <td>Singer</td>
+    //           <td>Songwriter</td>
+    //           <td>Actress</td>
+    //         </tr>
+    //       </tbody>
+    //     </table>
+    //   `,
     immediatelyRender: false,
   });
 
@@ -101,10 +108,12 @@ export function Editor() {
   }
 
   return (
-    <div className="size-full overflow-x-auto  bg-[#f9fbfd] print:p-0 print:overflow-visible print:bg-white">
+    <div className="size-full overflow-x-auto print:p-0 print:overflow-visible print:bg-white">
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
       </div>
+
+      <ThemeToggle className="fixed bottom-2 right-2"/>
     </div>
   );
 }
