@@ -22,6 +22,8 @@ import { TextColorButton } from "./text-color-button";
 import { TextHighlightButton } from "./text-highlight-button";
 import { LinkButton } from "./link-button";
 import { ImageButton } from "./image-button";
+import { TextAlignmentButton } from "./text-alignment-button";
+import { ListButton } from "./list-button";
 
 export function Toolbar() {
   const { editor } = useEditorStore();
@@ -140,9 +142,9 @@ export function Toolbar() {
       />
       <LinkButton/>
       <ImageButton/>
-      {/* TODO: Align */}
+      <TextAlignmentButton/>
       {/* TODO: Line Height */}
-      {/* TODO: List */}
+      <ListButton/>
       {sections[2].map((section) => (
         <ToolbarButton key={section.label} {...section} />
       ))}

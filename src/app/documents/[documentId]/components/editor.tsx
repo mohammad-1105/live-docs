@@ -19,6 +19,7 @@ import Heading from "@tiptap/extension-heading";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
+import TextAlign from '@tiptap/extension-text-align'
 import ThemeToggle from "@/components/theme-toggle";
 
 export function Editor() {
@@ -151,6 +152,9 @@ export function Editor() {
           }
         },
       }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      })
     ],
     // content: `
     //     <table>
