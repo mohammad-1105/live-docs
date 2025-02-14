@@ -24,6 +24,7 @@ import { LinkButton } from "./link-button";
 import { ImageButton } from "./image-button";
 import { TextAlignmentButton } from "./text-alignment-button";
 import { ListButton } from "./list-button";
+import { FontSizeButton } from "./font-size-button";
 
 export function Toolbar() {
   const { editor } = useEditorStore();
@@ -112,22 +113,22 @@ export function Toolbar() {
       ))}
       <Separator
         orientation="vertical"
-        className="h-6 bg-foreground/30 dark:bg-primary-foreground/50"
+        className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
       />
       <FontFamilyButton />
       <Separator
         orientation="vertical"
-        className="h-6 bg-foreground/30 dark:bg-primary-foreground/50"
+        className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
       />
       <HeadingLevelButton />
       <Separator
         orientation="vertical"
-        className="h-6  bg-foreground/30 dark:bg-primary-foreground/50"
+        className="h-6  bg-foreground/30 dark:bg-primary-foreground/100"
       />
-      {/* TODO:  Font size*/}
+      <FontSizeButton/>
       <Separator
         orientation="vertical"
-        className="h-6 bg-foreground/30 dark:bg-primary-foreground/50"
+        className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
       />
 
       {sections[1].map((section) => (
@@ -138,7 +139,7 @@ export function Toolbar() {
       <TextHighlightButton/>
       <Separator
         orientation="vertical"
-        className="h-6 bg-foreground/30 dark:bg-primary-foreground/50"
+        className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
       />
       <LinkButton/>
       <ImageButton/>
