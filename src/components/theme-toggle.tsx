@@ -16,7 +16,7 @@ export default function ThemeToggle({ className }: { className?: string }) {
   if (!mounted) return null;
 
   const currentTheme = theme === "system" ? systemTheme : theme;
-  console.log(currentTheme);
+  
 
   return (
     <Button
