@@ -21,6 +21,7 @@ import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
 import { FontSizeExtension } from "@/extensions/font-size";
+import { LineHeightExtension } from "@/extensions/line-height";
 import ThemeToggle from "@/components/theme-toggle";
 
 export function Editor() {
@@ -157,6 +158,10 @@ export function Editor() {
         types: ["heading", "paragraph"],
       }),
       FontSizeExtension,
+      LineHeightExtension.configure({
+        types: ["heading", "paragraph"],
+        defaultLineHeight: "normal",
+      }),
     ],
     // content: `
     //     <table>

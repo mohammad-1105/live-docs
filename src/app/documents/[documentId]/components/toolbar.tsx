@@ -15,16 +15,17 @@ import {
 } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { Separator } from "@/components/ui/separator";
-import { FontFamilyButton } from "./font-family-button";
-import { ToolbarButton } from "./toolbar-button";
-import { HeadingLevelButton } from "./heading-level-button";
-import { TextColorButton } from "./text-color-button";
-import { TextHighlightButton } from "./text-highlight-button";
-import { LinkButton } from "./link-button";
-import { ImageButton } from "./image-button";
-import { TextAlignmentButton } from "./text-alignment-button";
-import { ListButton } from "./list-button";
-import { FontSizeButton } from "./font-size-button";
+import { FontFamilyButton } from "./buttons/font-family-button";
+import { ToolbarButton } from "./buttons/toolbar-button";
+import { HeadingLevelButton } from "./buttons/heading-level-button";
+import { TextColorButton } from "./buttons/text-color-button";
+import { TextHighlightButton } from "./buttons/text-highlight-button";
+import { LinkButton } from "./buttons/link-button";
+import { ImageButton } from "./buttons/image-button";
+import { TextAlignmentButton } from "./buttons/text-alignment-button";
+import { ListButton } from "./buttons/list-button";
+import { FontSizeButton } from "./buttons/font-size-button";
+import { LineHeightButton } from "./buttons/line-height-button";
 
 export function Toolbar() {
   const { editor } = useEditorStore();
@@ -125,7 +126,7 @@ export function Toolbar() {
         orientation="vertical"
         className="h-6  bg-foreground/30 dark:bg-primary-foreground/100"
       />
-      <FontSizeButton/>
+      <FontSizeButton />
       <Separator
         orientation="vertical"
         className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
@@ -135,17 +136,17 @@ export function Toolbar() {
         <ToolbarButton key={section.label} {...section} />
       ))}
 
-      <TextColorButton/>
-      <TextHighlightButton/>
+      <TextColorButton />
+      <TextHighlightButton />
       <Separator
         orientation="vertical"
         className="h-6 bg-foreground/30 dark:bg-primary-foreground/100"
       />
-      <LinkButton/>
-      <ImageButton/>
-      <TextAlignmentButton/>
-      {/* TODO: Line Height */}
-      <ListButton/>
+      <LinkButton />
+      <ImageButton />
+      <TextAlignmentButton />
+      <LineHeightButton />
+      <ListButton />
       {sections[2].map((section) => (
         <ToolbarButton key={section.label} {...section} />
       ))}
