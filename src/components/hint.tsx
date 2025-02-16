@@ -15,7 +15,7 @@ export function Hint({ label, children }: HintProps) {
     <TooltipProvider>
       <Tooltip delayDuration={0.5}>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent>{label}</TooltipContent>
+        <TooltipContent side="bottom">{label}</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );
