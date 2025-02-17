@@ -9,6 +9,7 @@ import {
   Redo2Icon,
   RemoveFormattingIcon,
   SpellCheckIcon,
+  StrikethroughIcon,
   UnderlineIcon,
   Undo2Icon,
   type LucideIcon,
@@ -83,6 +84,12 @@ export function Toolbar() {
         icon: UnderlineIcon,
         onClick: () => editor?.chain().focus().toggleUnderline().run(),
         isActive: editor?.isActive("underline"),
+      },
+      {
+        label: "Strike Through",
+        icon: StrikethroughIcon,
+        onClick: () => editor?.chain().focus().toggleStrike().run(),
+        isActive: editor?.isActive("strike"),
       },
     ],
 
