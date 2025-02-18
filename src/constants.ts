@@ -117,3 +117,47 @@ export const headings: {
   { label: "Heading 4", value: 4, fontSize: "18px" },
   { label: "Heading 5", value: 5, fontSize: "16px" },
 ];
+
+// Templates for the app home page
+
+export const templates: {
+  id: string;
+  label: string;
+  imageSrc: string;
+}[] = [
+  {
+    id: "blank",
+    label: "Blank document",
+    imageSrc: "./assets/blank-document.svg",
+  },
+  {
+    id: "business-letter",
+    label: "Business letter",
+    imageSrc: "./assets/business-letter.svg",
+  },
+  {
+    id: "cover-letter",
+    label: "Cover letter",
+    imageSrc: "./assets/cover-letter.svg",
+  },
+  {
+    id: "letter",
+    label: "Letter",
+    imageSrc: "./assets/letter.svg",
+  },
+  {
+    id: "project-proposal",
+    label: "Project proposal",
+    imageSrc: "./assets/project-proposal.svg",
+  },
+  {
+    id: "resume",
+    label: "Resume",
+    imageSrc: "./assets/resume.svg",
+  },
+  {
+    id: "software-proposal",
+    label: "Software proposal",
+    imageSrc: "./assets/software-proposal.svg",
+  },
+];
