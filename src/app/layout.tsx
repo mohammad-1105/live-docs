@@ -22,12 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${inter.className}  antialiased `}>
-        <ThemeProvider>
-          <ConvexClientProvider>
-            <NuqsAdapter>{children}</NuqsAdapter>
-          </ConvexClientProvider>
-        </ThemeProvider>
+      <body className={`${inter.variable} ${inter.className} antialiased`}>
+        <ConvexClientProvider>
+          <NuqsAdapter>
+            <ThemeProvider>{children}</ThemeProvider>
+          </NuqsAdapter>
+        </ConvexClientProvider>
       </body>
     </html>
   );

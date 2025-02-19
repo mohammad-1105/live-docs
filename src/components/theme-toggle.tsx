@@ -16,13 +16,12 @@ export default function ThemeToggle({ className }: { className?: string }) {
   if (!mounted) return null;
 
   const currentTheme = theme === "system" ? systemTheme : theme;
-  
 
   return (
     <Button
-        className={cn('rounded-full', className)}
-        variant={"secondary"}
-        size={"sm"}
+      className={cn("rounded-full", className)}
+      variant={"secondary"}
+      size={"sm"}
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
     >
       {currentTheme === "dark" ? (
