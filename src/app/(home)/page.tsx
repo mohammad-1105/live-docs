@@ -3,13 +3,15 @@ import React from "react";
 import { HomeNavbar } from "./components/home-navbar";
 import { TemplatesGallery } from "./components/templates-gallery";
 import ThemeToggle from "@/components/theme-toggle";
-import {usePaginatedQuery } from "convex/react";
+import { usePaginatedQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import { DocumentsTable } from "./components/documents-table";
+import { useSearchParam } from "@/hooks/use-search-param";
 export default function HomePage() {
+  const [search] = useSearchParam();
   const { isLoading, loadMore, results, status } = usePaginatedQuery(
     api.documents.get,
-    {},
+    { search },
     { initialNumItems: 5 }
   );
 

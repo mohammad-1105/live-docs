@@ -30,17 +30,33 @@ export const create = mutation({
 });
 
 export const get = query({
-  args: { paginationOpts: paginationOptsValidator },
-  handler: async (ctx, args) => {
+  args: {
+    paginationOpts: paginationOptsValidator,
+    search: v.optional(v.string()),
+  },
+  handler: async (ctx, { paginationOpts, search }) => {
     // verify user is authenticated
     const user: UserIdentity | null = await ctx.auth.getUserIdentity();
     if (!user) {
       throw new ConvexError("Unauthorized");
     }
 
+    // search for documents owned by the user
+    if (search) {
+      const docs: PaginationResult<Doc<"documents">> = await ctx.db
+        .query("documents")
+        .withSearchIndex("search_title", (q) =>
+          q.search("title", search).eq("ownerId", user.subject)
+        )
+        .paginate(paginationOpts);
+      return docs;
+    }
+
+    // get all documents owned by the user
     const docs: PaginationResult<Doc<"documents">> = await ctx.db
       .query("documents")
-      .paginate(args.paginationOpts);
+      .withIndex("by_owner_id", (q) => q.eq("ownerId", user.subject))
+      .paginate(paginationOpts);
 
     return docs;
   },

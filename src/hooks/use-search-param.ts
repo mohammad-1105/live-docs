@@ -12,7 +12,7 @@ import { useQueryState, parseAsString } from "nuqs";
  * @returns A tuple containing the current value of the search parameter and a
  *   function to update the search parameter.
  */
-export const useSearchParam = (key: string) => {
+export const useSearchParam = (key?: string) => {
   return useQueryState(
     (key = "search"),
     parseAsString.withDefault("").withOptions({ clearOnDefault: true })
