@@ -10,7 +10,7 @@ export default function HomePage() {
   const { isLoading, loadMore, results, status } = usePaginatedQuery(
     api.documents.get,
     {},
-    { initialNumItems: 10 }
+    { initialNumItems: 5 }
   );
 
   return (

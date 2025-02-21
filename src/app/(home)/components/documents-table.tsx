@@ -11,6 +11,7 @@ import {
   TableHead,
 } from "@/components/ui/table";
 import { DocumentRow } from "./document-row";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   documents: Doc<"documents">[] | undefined;
@@ -38,8 +39,10 @@ export function DocumentsTable({
               <TableRow className="hover:bg-transparent border-none select-none">
                 <TableHead>Home</TableHead>
                 <TableHead>&nbsp;</TableHead>
-                <TableHead>Shared</TableHead>
-                <TableHead>Created at</TableHead>
+                <TableHead className="hidden md:table-cell">Shared</TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Created at
+                </TableHead>
               </TableRow>
             </TableHeader>
             {documents?.length === 0 ? (
@@ -63,6 +66,21 @@ export function DocumentsTable({
           </Table>
         </div>
       )}
+
+      <div className="flex items-center justify-center">
+        <Button
+          variant={"ghost"}
+          size={"sm"}
+          onClick={() => {
+            loadMore(5);
+          }}
+          disabled={status !== "CanLoadMore"}
+        >
+          {  status === "CanLoadMore"
+            ? "Load More"
+            : "No More Documents"}
+        </Button>
+      </div>
     </div>
   );
 }
