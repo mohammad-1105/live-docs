@@ -7,7 +7,6 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  TableFooter,
   TableHead,
 } from "@/components/ui/table";
 import { DocumentRow } from "./document-row";

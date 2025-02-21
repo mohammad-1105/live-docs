@@ -2,7 +2,7 @@
 
 import { Logo } from "@/components/logo";
 import { SearchInput } from "./search-input";
-import { UserButton } from "@clerk/clerk-react";
+import { OrganizationSwitcher, UserButton } from "@clerk/clerk-react";
 export function HomeNavbar() {
   return (
     <nav className="flex items-center justify-between size-full px-4">
@@ -11,8 +11,14 @@ export function HomeNavbar() {
         <h3>Live Docs</h3>
       </span>
       <SearchInput />
-      <div>
-        <UserButton/>
+      <div className="flex items-center gap-3">
+        <OrganizationSwitcher
+          afterCreateOrganizationUrl="/"
+          afterLeaveOrganizationUrl="/"
+          afterSelectOrganizationUrl="/"
+          afterSelectPersonalUrl="/"
+        />
+        <UserButton />
       </div>
     </nav>
   );

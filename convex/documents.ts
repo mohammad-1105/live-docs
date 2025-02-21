@@ -19,10 +19,16 @@ export const create = mutation({
       throw new ConvexError("Unauthorized");
     }
 
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
+
     const docId: Id<"documents"> = await ctx.db.insert("documents", {
       title: args.title ?? "Untitled Document",
       initialContent: args.initialContent,
       ownerId: user.subject,
+      organizationId
     });
 
     return docId;
@@ -41,12 +47,38 @@ export const get = query({
       throw new ConvexError("Unauthorized");
     }
 
+    const organizationId = (user.organization_id ?? undefined) as
+      | string
+      | undefined;
+
+    // search for documents owned by the user in the organization
+    if (search && organizationId) {
+      const docs: PaginationResult<Doc<"documents">> = await ctx.db
+        .query("documents")
+        .withSearchIndex("search_title", (q) =>
+          q.search("title", search).eq("organizationId", organizationId)
+        )
+        .paginate(paginationOpts);
+      return docs;
+    }
+
     // search for documents owned by the user
     if (search) {
       const docs: PaginationResult<Doc<"documents">> = await ctx.db
         .query("documents")
         .withSearchIndex("search_title", (q) =>
           q.search("title", search).eq("ownerId", user.subject)
+        )
+        .paginate(paginationOpts);
+      return docs;
+    }
+
+    if (organizationId) {
+      // get all documents owned by the user in the organization
+      const docs: PaginationResult<Doc<"documents">> = await ctx.db
+        .query("documents")
+        .withIndex("by_organization_id", (q) =>
+          q.eq("organizationId", organizationId)
         )
         .paginate(paginationOpts);
       return docs;
