@@ -1,26 +1,6 @@
 "use client";
 import * as React from "react";
 import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarShortcut,
-  MenubarSeparator,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { useEditorStore } from "@/store/use-editor-store";
-import {
   BoldIcon,
   FileIcon,
   FileJsonIcon,
@@ -41,9 +21,30 @@ import {
   Underline,
   UndoIcon,
 } from "lucide-react";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarShortcut,
+  MenubarSeparator,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useEditorStore } from "@/store/use-editor-store";
 import { FaFilePdf } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { RenameDocumentDialog } from "@/components/rename-document-dialog";
 
 export function DocumentMenubar() {
   const [rows, setRows] = React.useState<string>("");
@@ -134,10 +135,13 @@ export function DocumentMenubar() {
             New Document
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>
-            <FilePenIcon className="size-4 mr-2" />
-            Rename
-          </MenubarItem>
+          <RenameDocumentDialog id="" initialTitle="">
+            <MenubarItem>
+              <FilePenIcon className="size-4 mr-2" />
+              Rename
+            </MenubarItem>
+          </RenameDocumentDialog>
+
           <MenubarItem>
             <TrashIcon className="size-4 mr-2" />
             Remove

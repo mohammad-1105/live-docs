@@ -1,6 +1,10 @@
+"use client";
+
 import { Logo } from "@/components/logo";
 import { DocumentInput } from "./document-input";
 import { DocumentMenubar } from "./document-menubar";
+import { OrganizationSwitcher, UserButton } from "@clerk/clerk-react";
+import { Avatars } from "./avatars";
 
 export function Navbar() {
   return (
@@ -13,6 +17,16 @@ export function Navbar() {
             <DocumentMenubar />
           </div>
         </div>
+      </div>
+      <div className="flex items-center gap-x-1">
+        <Avatars />
+        <OrganizationSwitcher
+          afterCreateOrganizationUrl="/"
+          afterLeaveOrganizationUrl="/"
+          afterSelectOrganizationUrl="/"
+          afterSelectPersonalUrl="/"
+        />
+        <UserButton />
       </div>
     </nav>
   );

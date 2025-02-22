@@ -19,8 +19,9 @@ export function ConvexClientProvider({ children }: { children: ReactNode }) {
     <ClerkProvider publishableKey={publishableKey}>
       <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
         <AuthLoading>
-          <div className="min-h-screen flex items-center justify-center p-3">
-            <Loader className="size-5 animate-spin" />
+          <div className="min-h-screen flex items-center justify-center p-3 text-slate-600">
+            <Loader className="size-5 animate-spin mr-2" />
+            Verifying Authentication…
           </div>
         </AuthLoading>
         <Unauthenticated>
